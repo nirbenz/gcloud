@@ -1,5 +1,9 @@
 #!/usr/bin/env bash
 
+echo Fixing scikit-learn version
+# do nothing
+
+# begin original stuff
 echo Running CS231n setup ...
 jupyter notebook --generate-config
 cp -f ./jupyter_notebook_config.py ~/.jupyter/
