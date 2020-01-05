@@ -131,7 +131,7 @@ gcloud compute --project "<YOUR_PROJECT_ID>" ssh --zone "us-west1-b" "<YOUR_VM_N
 After you SSH into the VM for the first time, you need to run a few commands in your home directory. You will be asked to set up a password for your Jupyter notebook.
 
 ```bash
-git clone https://github.com/cs231n/gcloud.git
+git clone https://github.com/nirbenz/gcloud.git
 cd gcloud/
 chmod +x ./setup.sh
 ./setup.sh
