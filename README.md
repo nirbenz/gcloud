@@ -1,6 +1,6 @@
 # Google Cloud Setup and Tutorial
 
-**This is our own local (Machine and Deep Learning Israel) version of Stanford's original course guide. Some things have been modified. An up to date version is also at (our own course repo)[https://nirbenz.github.io/gce-all-new/]**
+**This is our own local (Machine and Deep Learning Israel) version of Stanford's original course guide. Some things have been modified. An up to date version is also at [our own course repo](https://nirbenz.github.io/gce-all-new/)**
 
 ## BEFORE WE BEGIN ##
 ### BIG REMINDER: Make sure you stop your instances! ###
