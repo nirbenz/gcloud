@@ -1,6 +1,33 @@
+---
+layout: post
+title: How To Get Everything Up and Running - 2020 Version
+permalink: /gce-all-new/
+---
+
 # Google Cloud Setup and Tutorial
 
-## This is our own local (Machine and Deep Learning Israel) version of Stanford's original course guide. Some things have been modified.
+## MDLI Intro
+
+#### updated Jan2020
+
+This is a guide for setting up Google Cloud Engine for the course. Most of this is directly lifted from [the original course guide](https://github.com/cs231n/gcloud), but this is intended to be a standalone guide. We realize people come from different backgrounds and we are here to help those who might have difficulties with getting everything up and running. Feel free to talk to us after class and/or use the [Facebook group](https://www.facebook.com/groups/980276185664007/)
+
+
+## Before We Begin: Credits/Stopping Your Instances
+Google (and the wonderful Naama) was nice enough to provide each one of you with 1000$ worth of *Google Cloud Platform* (*GCP* from now on) credits. This might sound like a lot, but in reality it actually isn't that much. The most important thing to remember during this course - and when working with cloud instances in general - is top **stop them when unused**. I'll repeat this; 
+
+#when you are *not* using an instance - stop it
+
+## Creating/Setting Up Your Google Account
+
+We assume you have GMail/Google Accounts. If you don't - this is a good time to create one. Google accounts give you access to many services, one of which is the GCP (and inside that, the *Google Compute Engine*/*GCE* - which is what we'll be using).
+
+### Getting your Credits
+If this is indeed your first time you should receive some free trial credits from Google, so those should suffice for the purpose of this guide (we will only waste very few of those, promise!). 
+
+The place where magical, free credits exist is **Will be updated**. You will naturally only receive credits if you are part of this course.
+
+You should enter **only using the email address associated with the Google account you will be using!**. For *Contact Name* enter **your** name. As for the *GCP Billing Account ID* - we'll get there soon, so hold on tight.
 
 ## BEFORE WE BEGIN ##
 ### BIG REMINDER: Make sure you stop your instances! ###
@@ -21,21 +48,21 @@ When you sign up for the first time, you also receive $300 credits from Google b
 
 First, if you don't have a Google Cloud account already, create one by going to the [Google Cloud homepage](https://cloud.google.com/?utm_source=google&utm_medium=cpc&utm_campaign=2015-q2-cloud-na-gcp-skws-freetrial-en&gclid=CP2e4PPpiNMCFU9bfgodGHsA1A "Title") and clicking on **Compute**. When you get to the next page, click on the blue **TRY IT FREE** button. If you are not logged into gmail, you will see a page that looks like the one below. Sign into your gmail account or create a new one if you do not already have an account.
 
-![](.img/launching-screen.png)
+![]({{ site.baseurl }}/images/orig_guide/launching-screen.png)
 
 Click the appropriate **yes** or **no** button for the first option, and check **yes** for the second option after you have read the required agreements. Press the blue **Agree and continue** button to continue to the next page to enter the requested information (your name, billing address and credit card information). Remember to select "**Individual**" as "Account Type":
 
-![](.img/register-info.png)
+![]({{ site.baseurl }}/images/orig_guide/register-info.png)
 
 Once you have entered the required information, press the blue **Start my free trial** button. You will be greeted by a page like this:
 
-![](.img/welcome-screen.png)
+![]({{ site.baseurl }}/images/orig_guide/welcome-screen.png)
 
 Click the "Google Cloud Platform" (in red circle), and it will take you to the main dashboard:
 
-![](.img/dashboard-screen.png)
+![]({{ site.baseurl }}/images/orig_guide/dashboard-screen.png)
 
-To change the name of your project, click on [**Go to project settings**](console.cloud.google.com/iam-admin/settings/project) under the **Project info** section.
+To change the name of your project, click on [**Go to project settings**](https://console.cloud.google.com/iam-admin/settings/project) under the **Project info** section.
 
 ## Request an increase in GPU quota
 
@@ -57,7 +84,7 @@ Your account typically does not come with GPU quota. You have to explicitly requ
 
 Your configuration sheet should look similar to below:
 
-![](.img/vm-config.png)
+![]({{ site.baseurl }}/images/orig_guide/vm-config.png)
 
 ### Change VM hardware
 
@@ -71,7 +98,7 @@ You can always change number of CPUs, number of GPUs, CPU memory, and GPU type a
 6. Scroll all the way down and click `Save` button.
 7. Start your instance again.
 
-<img src=".img/machine-typ.png" width="50%">
+![]({{ site.baseurl }}/images/orig_guide/machine-typ.png | width=50)
 
 ### Configure networking
 
@@ -94,12 +121,15 @@ We need to tweak a few more settings to enable remote access to Jupyter notebook
 
 Your configuration sheets should look similar to below:
 
-<img src=".img/network.png" width="70%">
+-
+![]({{ site.baseurl }}/images/orig_guide/network.png | width=70)
+-
 
 Firewall Rules:
 
-<img src=".img/firewall.png" width="70%">
-
+-
+![]({{ site.baseurl }}/images/orig_guide/firewall.png | width=70)
+-
 
 ### Access your newly created VM
 
@@ -113,7 +143,7 @@ To ssh into your VM, go to your VM instance details page by clicking on its name
 gcloud compute --project "<YOUR_PROJECT_ID>" ssh --zone "us-west1-b" "<YOUR_VM_NAME>"
 ```
 
-![](.img/connect-to-vm.png)
+![]({{ site.baseurl }}/images/orig_guide/connect-to-vm.png)
 
 
 ## First-time Setup Script
@@ -141,21 +171,21 @@ Many of the assignments will involve using Jupyter Notebook. Below, we discuss h
 ### Getting a Static IP Address ###
 Change the External IP address of your Google Cloud Engine instance to be static (see screenshot below).
 
-![](.img/external-ip.png)
+![]({{ site.baseurl }}/images/orig_guide/external-ip.png)
 
 To Do this, click on the 3 line icon next to the **Google Cloud Platform** button on the top left corner of your screen, go to **VPC network** > **External IP addresses** (see screenshot below).
 
-![](.img/networking-external-ip.png)
+![]({{ site.baseurl }}/images/orig_guide/networking-external-ip.png)
 
 To have a static IP address, change **Type** from **Ephemeral** to **Static**. Enter your prefered name for your static IP, ours is `cs231n-ip` (see screenshot below). And click on Reserve. 
 
 **NOTE:** At the end of CS 231N when you don't need your instance anymore, release the static IP address because Google charges a small fee for unused static IPs (according to [this page](https://jeffdelaney.me/blog/running-jupyter-notebook-google-cloud-platform/)).
 
-![](.img/networking-external-ip-naming.png)
+![]({{ site.baseurl }}/images/orig_guide/networking-external-ip-naming.png)
 
 Take note of your Static IP address (circled on the screenshot below). We use 35.185.240.182 for this tutorial.
 
-![](.img/networking-external-ip-address.png)
+![]({{ site.baseurl }}/images/orig_guide/networking-external-ip-address.png)
 
 
 ### Launching and connecting to Jupyter Notebook ###
