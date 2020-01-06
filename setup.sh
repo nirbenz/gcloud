@@ -12,5 +12,5 @@ echo Please set a password for your Jupyter notebook
 python -m notebook.auth password
 sudo chmod -R 777 /opt
 echo Installing Tensorflow 2.0 ...
-pip install tensorflow-gpu==2.0.0-alpha0
+pip install tensorflow-gpu==2.0.0
 echo Setup finished.
