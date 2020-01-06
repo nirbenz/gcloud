@@ -2,7 +2,7 @@
 
 echo Fixing scikit-learn version
 # change to 1.2.1
-conda install -c anaconda scipy=1.2.1
+conda install -c anaconda -y scipy=1.2.1
 
 # begin original stuff
 echo Running CS231n setup ...
